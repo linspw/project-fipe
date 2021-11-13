@@ -2,8 +2,23 @@ import type { NextPage } from "next";
 import { UIText } from "@components/ui/text";
 import { HomePageContainer } from "@styles/pages/home-page-style";
 import { SearchFIPECard } from "@modules/search-fipe-card";
+import { GetStaticProps } from "next";
+import { getAllBrands } from "@services/get-all-brands";
+import { useAppDispatch } from "@stores/hooks";
+import { setBrandList } from "@modules/search-fipe-card/fipe-form-slice";
+interface Props {
+  brands: object[];
+}
 
-const Home: NextPage = () => {
+export const getServerSideProps: GetStaticProps = async () => {
+  const brands = await getAllBrands();
+  return { props: { brands } };
+};
+
+const Home: NextPage<Props> = ({ brands }: Props) => {
+  const dispatch = useAppDispatch();
+  dispatch(setBrandList(brands));
+
   return (
     <HomePageContainer>
       <UIText

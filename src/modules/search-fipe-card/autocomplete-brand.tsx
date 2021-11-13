@@ -2,21 +2,24 @@ import * as React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/core/Autocomplete";
 import type { NextComponentType } from "next";
-
-const options = ["Option 1", "Option 2"];
+import { useAppSelector, useAppDispatch } from "@stores/hooks";
+import { selectBrandList, selectBrand, setBrand } from "./fipe-form-slice";
 
 const AutocompleteBrand: NextComponentType = () => {
-  const [value, setValue] = React.useState(options[0]);
+  const options = useAppSelector(selectBrandList);
+  const value = useAppSelector(selectBrand);
+  const dispatch = useAppDispatch();
 
   const handleSelectChange = (event: any, newValue: any) => {
-    setValue(newValue);
+    dispatch(setBrand(newValue));
   };
 
   return (
     <Autocomplete
+      noOptionsText="Nenhuma opção encontrada!"
       value={value}
       onChange={handleSelectChange}
-      id="controllable-states-demo"
+      getOptionLabel={(option) => option.nome}
       options={options}
       sx={{ marginBottom: "16px", width: "100%" }}
       renderInput={(params) => <TextField {...params} label="Marca" />}

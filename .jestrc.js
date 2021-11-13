@@ -9,5 +9,7 @@ module.exports = {
     "^@layouts(.*)$": "<rootDir>/layouts$1",
     "^@styles(.*)$": "<rootDir>/styles$1",
     "^@modules(.*)$": "<rootDir>/modules$1",
+    "^@stores(.*)$": "<rootDir>/stores$1",
+    "^@services(.*)$": "<rootDir>/services$1",
   },
 };

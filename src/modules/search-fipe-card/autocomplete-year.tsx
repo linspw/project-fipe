@@ -1,28 +1,53 @@
 import * as React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/core/Autocomplete";
+import type { NextComponentType } from "next";
+import { useAppSelector, useAppDispatch } from "@stores/hooks";
+import { useEffect } from "react";
+import {
+  selectBrand,
+  selectCannotSearchYear,
+  selectModel,
+  selectYear,
+  selectYearList,
+  setYear,
+  setYearList,
+} from "./fipe-form-slice";
+import { getYearsByBrandAndModel } from "@/services/get-years-by-brand-and-model";
 
-const options = ["Option 1", "Option 2"];
-
-type Props = {
-  styles?: React.CSSProperties;
-  children?: React.ReactElement<any>;
-};
-
-const AutocompleteYear: React.FC<Props> = () => {
-  const [value, setValue] = React.useState(options[0]);
+const AutocompleteYear: NextComponentType = () => {
+  const cannotSearchYear = useAppSelector(selectCannotSearchYear);
+  const options = useAppSelector(selectYearList);
+  const value = useAppSelector(selectYear);
+  const brand = useAppSelector(selectBrand);
+  const model = useAppSelector(selectModel);
+  const dispatch = useAppDispatch();
 
   const handleSelectChange = (event: any, newValue: any) => {
-    setValue(newValue);
+    dispatch(setYear(newValue));
   };
+
+  useEffect(() => {
+    if (!cannotSearchYear) {
+      getYearsByBrandAndModel(brand.codigo, model.codigo).then((result) => {
+        dispatch(setYearList(result));
+      });
+    } else {
+      dispatch(setYearList([]));
+      dispatch(setYear(null));
+    }
+  }, [cannotSearchYear]);
+
+  if (cannotSearchYear) return null;
 
   return (
     <Autocomplete
+      noOptionsText="Nenhuma opção encontrada!"
       value={value}
       onChange={handleSelectChange}
-      id="controllable-states-demo"
       options={options}
       sx={{ marginBottom: "16px", width: "100%" }}
+      getOptionLabel={(option) => option.nome}
       renderInput={(params) => <TextField {...params} label="Ano" />}
     />
   );
