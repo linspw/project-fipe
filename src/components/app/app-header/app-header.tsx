@@ -1,11 +1,16 @@
 import type { NextComponentType } from "next";
-import Head from "next/head";
+import { Header, HeaderLogoLink } from "./style";
 import Image from "next/image";
+import ProjectFipeLogo from "@assets/project-fipe-logo.svg";
 
 const AppHeader: NextComponentType = () => {
   return (
     <>
-      <header>Deu</header>
+      <Header>
+        <HeaderLogoLink href="/">
+          <Image src={ProjectFipeLogo} alt="Project FIPE logo." />
+        </HeaderLogoLink>
+      </Header>
     </>
   );
 };

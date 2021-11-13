@@ -7,5 +7,6 @@ module.exports = {
     "^@hooks(.*)$": "<rootDir>/hooks$1",
     "^@assets(.*)$": "<rootDir>/assets$1",
     "^@layouts(.*)$": "<rootDir>/layouts$1",
+    "^@styles(.*)$": "<rootDir>/styles$1",
   },
 };
