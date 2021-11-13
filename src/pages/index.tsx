@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { UIText } from "@components/ui/text";
 import { HomePageContainer } from "@styles/pages/home-page-style";
+import { SearchFIPECard } from "@modules/search-fipe-card";
 
 const Home: NextPage = () => {
   return (
@@ -9,13 +10,24 @@ const Home: NextPage = () => {
         tag="h1"
         weight="bold"
         size="extra-large"
-        style={{ marginBottom: "16px" }}
+        style={{ marginBottom: "8px" }}
+        color="black"
       >
         Tabela Fipe
       </UIText>
-      <UIText tag="h2" weight="bold">
+
+      <UIText
+        tag="h2"
+        weight="bold"
+        size="large"
+        style={{ marginBottom: "16px" }}
+        align="center"
+        color="black"
+      >
         Consulte o valor de um veículo de forma gratuita.
       </UIText>
+
+      <SearchFIPECard />
     </HomePageContainer>
   );
 };

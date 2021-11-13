@@ -9,26 +9,34 @@ export type TextContainerProps = {
   size?: "extra-large" | "large" | "medium" | "small";
   weight?: "bold" | "medium" | "regular";
   style?: object;
+  align?: "center" | "left" | "right";
+};
+
+const colorDictionary = {
+  white: "#fff",
+  black: "#424242",
+  inherit: "inherit",
 };
 
 const sizeDictionary = {
-  "extra-large": "32px",
+  "extra-large": "34px",
   large: "24px",
   medium: "16px",
   small: "12px",
 };
 
 const weightDictionary = {
-  bold: "bold",
-  medium: "medium",
+  bold: "700",
+  medium: "500",
   regular: "400",
 };
 
 const Text = styled.div<TextContainerProps>`
   margin: 0;
-  color: ${(props) => props.color};
+  color: ${(props) => colorDictionary[props.color || "inherit"]};
   font-size: ${(props) => sizeDictionary[props.size || "medium"]};
   font-weight: ${(props) => weightDictionary[props.weight || "regular"]};
+  text-align: ${(props) => props.align || "left"};
 `;
 
 export { Text };

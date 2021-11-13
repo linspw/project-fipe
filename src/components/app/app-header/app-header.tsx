@@ -5,13 +5,11 @@ import ProjectFipeLogo from "@assets/project-fipe-logo.svg";
 
 const AppHeader: NextComponentType = () => {
   return (
-    <>
-      <Header>
-        <HeaderLogoLink href="/">
-          <Image src={ProjectFipeLogo} alt="Project FIPE logo." />
-        </HeaderLogoLink>
-      </Header>
-    </>
+    <Header>
+      <HeaderLogoLink href="/">
+        <Image src={ProjectFipeLogo} alt="Project FIPE logo." />
+      </HeaderLogoLink>
+    </Header>
   );
 };
 

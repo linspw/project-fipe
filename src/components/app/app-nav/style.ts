@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  background-color: #2a11be;
+  background-color: #5d00bf;
   width: 100%;
 `;
 

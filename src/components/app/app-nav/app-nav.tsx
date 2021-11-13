@@ -4,15 +4,13 @@ import { UIText } from "@components/ui/text";
 
 const AppNav: NextComponentType = () => {
   return (
-    <>
-      <Nav>
-        <NavWrapper>
-          <UIText tag="a" color="white" href="/">
-            Home
-          </UIText>
-        </NavWrapper>
-      </Nav>
-    </>
+    <Nav>
+      <NavWrapper>
+        <UIText tag="a" color="white" href="/" weight="medium">
+          Home
+        </UIText>
+      </NavWrapper>
+    </Nav>
   );
 };
 
