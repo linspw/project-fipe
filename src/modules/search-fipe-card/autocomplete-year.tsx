@@ -29,14 +29,14 @@ const AutocompleteYear: NextComponentType = () => {
 
   useEffect(() => {
     if (!cannotSearchYear) {
-      getYearsByBrandAndModel(brand.codigo, model.codigo).then((result) => {
-        dispatch(setYearList(result));
+      getYearsByBrandAndModel({
+        brandId: brand?.codigo,
+        modelId: model?.codigo,
+      }).then((result) => {
+        dispatch(setYearList(result.years));
       });
-    } else {
-      dispatch(setYearList([]));
-      dispatch(setYear(null));
     }
-  }, [cannotSearchYear]);
+  }, [cannotSearchYear, brand, model, dispatch]);
 
   if (cannotSearchYear) return null;
 

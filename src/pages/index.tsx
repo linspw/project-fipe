@@ -6,18 +6,21 @@ import { GetStaticProps } from "next";
 import { getAllBrands } from "@services/get-all-brands";
 import { useAppDispatch } from "@stores/hooks";
 import { setBrandList } from "@modules/search-fipe-card/fipe-form-slice";
-interface Props {
-  brands: object[];
-}
+import { useRouter } from "next/router";
+import { SearchFilter } from "@app-types/search-types";
+import queryString from "query-string";
 
-export const getServerSideProps: GetStaticProps = async () => {
-  const brands = await getAllBrands();
-  return { props: { brands } };
-};
-
-const Home: NextPage<Props> = ({ brands }: Props) => {
+const HomePage: NextPage<Props> = ({ brands }: Props) => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   dispatch(setBrandList(brands));
+
+  const handleSubmit = (filter: SearchFilter) => {
+    router.push({
+      pathname: "/resultados",
+      query: queryString.stringify(filter),
+    });
+  };
 
   return (
     <HomePageContainer>
@@ -42,9 +45,18 @@ const Home: NextPage<Props> = ({ brands }: Props) => {
         Consulte o valor de um veículo de forma gratuita.
       </UIText>
 
-      <SearchFIPECard />
+      <SearchFIPECard onSubmit={handleSubmit} />
     </HomePageContainer>
   );
 };
 
-export default Home;
+interface Props {
+  brands: object[];
+}
+
+export const getServerSideProps: GetStaticProps = async () => {
+  const { brands } = await getAllBrands();
+  return { props: { brands } };
+};
+
+export default HomePage;

@@ -1,9 +1,15 @@
-const getAllBrands = async (): Promise<Response> => {
-  const resBrand = await fetch(
-    "https://parallelum.com.br/fipe/api/v1/carros/marcas"
-  );
-  const brands = await resBrand.json();
-  return brands;
+import { ParallelumApi } from "@api/parallelum-api";
+import { SearchAllBrandResponse } from "@app-types/search-types";
+
+const getAllBrands = async (): Promise<SearchAllBrandResponse> => {
+  try {
+    const result = await ParallelumApi.getAllBrands();
+    const brands = result.data;
+
+    return { brands };
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export { getAllBrands };

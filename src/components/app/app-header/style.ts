@@ -10,6 +10,10 @@ const Header = styled.header`
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
+
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const HeaderLogoLink = styled.a`

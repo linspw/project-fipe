@@ -5,7 +5,7 @@ export type TextContainerProps = {
   children?: React.ReactNode;
   tag?: "p" | "h1" | "h2" | "h3" | "h4" | "strong" | "span" | "a";
   href?: string;
-  color?: "white" | "black" | "inherit";
+  color?: "white" | "black" | "grey" | "inherit";
   size?: "extra-large" | "large" | "medium" | "small";
   weight?: "bold" | "medium" | "regular";
   style?: object;
@@ -13,6 +13,7 @@ export type TextContainerProps = {
 };
 
 const colorDictionary = {
+  grey: "#74787a",
   white: "#fff",
   black: "#424242",
   inherit: "inherit",

@@ -3,7 +3,15 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/core/Autocomplete";
 import type { NextComponentType } from "next";
 import { useAppSelector, useAppDispatch } from "@stores/hooks";
-import { selectBrandList, selectBrand, setBrand } from "./fipe-form-slice";
+import {
+  selectBrandList,
+  setYearList,
+  setModelList,
+  selectBrand,
+  setBrand,
+  setModel,
+  setYear,
+} from "./fipe-form-slice";
 
 const AutocompleteBrand: NextComponentType = () => {
   const options = useAppSelector(selectBrandList);
@@ -12,6 +20,10 @@ const AutocompleteBrand: NextComponentType = () => {
 
   const handleSelectChange = (event: any, newValue: any) => {
     dispatch(setBrand(newValue));
+    dispatch(setModel(null));
+    dispatch(setModelList([]));
+    dispatch(setYear(null));
+    dispatch(setYearList([]));
   };
 
   return (

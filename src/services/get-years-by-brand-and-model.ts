@@ -1,12 +1,26 @@
-const getYearsByBrandAndModel = async (
-  brandId: string,
-  modelId: string
-): Promise<Response> => {
-  const resBrand = await fetch(
-    `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos/${modelId}/anos`
-  );
-  const anos = await resBrand.json();
-  return anos;
+import { ParallelumApi } from "@api/parallelum-api";
+import {
+  SearchYearsByBrandAndModelParams,
+  SearchYearsByBrandAndModelResponse,
+} from "@app-types/search-types";
+
+const getYearsByBrandAndModel = async ({
+  brandId,
+  modelId,
+}: SearchYearsByBrandAndModelParams): Promise<SearchYearsByBrandAndModelResponse> => {
+  try {
+    if (!(brandId && modelId)) throw new Error("Falta campos no filtro!");
+
+    const result = await ParallelumApi.getYearsByBrandAndModel({
+      brandId,
+      modelId,
+    });
+    const years = result.data;
+
+    return { years };
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export { getYearsByBrandAndModel };

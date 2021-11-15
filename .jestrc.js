@@ -11,5 +11,8 @@ module.exports = {
     "^@modules(.*)$": "<rootDir>/modules$1",
     "^@stores(.*)$": "<rootDir>/stores$1",
     "^@services(.*)$": "<rootDir>/services$1",
+    "^@stores(.*)$": "<rootDir>/stores$1",
+    "^@app-types(.*)$": "<rootDir>/types$1",
+    "^@api(.*)$": "<rootDir>/api$1",
   },
 };

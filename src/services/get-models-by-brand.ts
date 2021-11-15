@@ -1,9 +1,26 @@
-const getModelsByBrand = async (brandId: string): Promise<Response> => {
-  const resBrand = await fetch(
-    `https://parallelum.com.br/fipe/api/v1/carros/marcas/${brandId}/modelos`
-  );
-  const { modelos } = await resBrand.json();
-  return modelos;
+import { ParallelumApi } from "@api/parallelum-api";
+import {
+  SearchModelByBrandParams,
+  SearchModelByBrandResponse,
+} from "@app-types/search-types";
+
+const getModelsByBrand = async ({
+  brandId,
+}: SearchModelByBrandParams): Promise<SearchModelByBrandResponse> => {
+  try {
+    if (!brandId) throw new Error("Falta campos no filtro!");
+
+    const result = await ParallelumApi.getModelsByBrand({
+      brandId,
+    });
+    const { modelos: models } = result.data;
+
+    if (!models?.length) throw new Error("Dados não encontrados");
+
+    return { models };
+  } catch (error) {
+    return Promise.reject(error);
+  }
 };
 
 export { getModelsByBrand };
