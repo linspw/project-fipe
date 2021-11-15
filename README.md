@@ -1,4 +1,7 @@
-# Projeto FIPE
+
+<div style="display:flex;justify-content:center;"><img src="https://user-images.githubusercontent.com/43552865/141843813-699b67f9-bbaa-440a-a813-514c70781f17.png"></div>
+
+# Introdução Projeto FIPE
 
 Aplicação que acessa a API da Parallelum para pesquisar o preço de um veículo com base na tabela FIPE.
 
