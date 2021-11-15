@@ -33,6 +33,7 @@ const AutocompleteBrand: NextComponentType = () => {
 
   return (
     <Autocomplete
+      id="autocomplete-brand"
       getOptionLabel={(option) => option.nome}
       loading={true}
       loadingText="Carregando"

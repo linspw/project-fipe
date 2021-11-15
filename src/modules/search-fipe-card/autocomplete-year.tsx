@@ -47,6 +47,7 @@ const AutocompleteYear: NextComponentType = () => {
 
   return (
     <Autocomplete
+      id="autocomplete-year"
       getOptionLabel={(option) => option.nome}
       loading={true}
       loadingText="Carregando"

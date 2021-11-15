@@ -1,5 +1,6 @@
 module.exports = {
-  setupFilesAfterEnv: [".src/config/jest.setup.js"],
+  verbose: true,
+  setupFilesAfterEnv: ["config/jest.setup.js"],
   moduleNameMapper: {
     "^@(.*)$": "<rootDir>$1",
     "^@components(.*)$": "<rootDir>/components$1",
@@ -15,4 +16,10 @@ module.exports = {
     "^@app-types(.*)$": "<rootDir>/types$1",
     "^@api(.*)$": "<rootDir>/api$1",
   },
+  rootDir: "src",
+  testPathIgnorePatterns: [
+    "<rootDir>/.next/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/cypress/",
+  ],
 };

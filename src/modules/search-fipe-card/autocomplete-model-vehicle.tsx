@@ -44,6 +44,7 @@ const AutocompleteModelVehicle: NextComponentType = () => {
 
   return (
     <Autocomplete
+      id="autocomplete-model"
       disabled={cannotSearchModel}
       getOptionLabel={(option) => option.nome}
       loading={true}
