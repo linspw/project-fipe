@@ -25,19 +25,16 @@ const AutocompleteModelVehicle: NextComponentType = () => {
 
   useEffect(() => {
     if (!cannotSearchModel) {
-      getModelsByBrand(brand.codigo).then((result) => {
-        dispatch(setModelList(result));
+      getModelsByBrand({ brandId: brand?.codigo }).then((result) => {
+        dispatch(setModelList(result.models));
       });
-    } else {
-      dispatch(setModelList([]));
-      dispatch(setModel(null));
-      dispatch(setYearList([]));
-      dispatch(setYear(null));
     }
-  }, [cannotSearchModel]);
+  }, [cannotSearchModel, brand, dispatch]);
 
   const handleSelectChange = (event: any, newValue: any) => {
     dispatch(setModel(newValue));
+    dispatch(setYearList([]));
+    dispatch(setYear(null));
   };
 
   return (
