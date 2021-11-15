@@ -1,4 +1,6 @@
-import * as React from "react";
+import React from "react";
+import type { FormField } from "@app-types/form-types";
+import type { SyntheticEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/core/Autocomplete";
 import type { NextComponentType } from "next";
@@ -23,7 +25,10 @@ const AutocompleteYear: NextComponentType = () => {
   const model = useAppSelector(selectModel);
   const dispatch = useAppDispatch();
 
-  const handleSelectChange = (event: any, newValue: any) => {
+  const handleSelectChange = (
+    _event: SyntheticEvent<Element, Event>,
+    newValue: FormField | null
+  ) => {
     dispatch(setYear(newValue));
   };
 
@@ -42,13 +47,15 @@ const AutocompleteYear: NextComponentType = () => {
 
   return (
     <Autocomplete
+      getOptionLabel={(option) => option.nome}
+      loading={true}
+      loadingText="Carregando"
       noOptionsText="Nenhuma opção encontrada!"
-      value={value}
       onChange={handleSelectChange}
       options={options}
-      sx={{ marginBottom: "16px", width: "100%" }}
-      getOptionLabel={(option) => option.nome}
       renderInput={(params) => <TextField {...params} label="Ano" />}
+      sx={{ marginBottom: "16px", width: "100%" }}
+      value={value}
     />
   );
 };

@@ -1,3 +1,4 @@
+import type { FormField } from "./form-types";
 export interface SearchFilter {
   brand: string | undefined;
   model: string | undefined;
@@ -15,12 +16,12 @@ export interface SearchModelByBrandServerResponse {
 }
 
 export interface SearchModelByBrandData {
-  modelos: string[];
-  marcas: string[];
+  modelos: FormField[];
+  marcas: FormField[];
 }
 
 export interface SearchModelByBrandResponse {
-  models: string[];
+  models: FormField[];
 }
 
 // Search Years
@@ -31,11 +32,11 @@ export interface SearchYearsByBrandAndModelParams {
 }
 
 export interface SearchYearsByBrandAndModelServerResponse {
-  data: number[];
+  data: FormField[];
 }
 
 export interface SearchYearsByBrandAndModelResponse {
-  years: number[];
+  years: FormField[];
 }
 
 // Search Price Types

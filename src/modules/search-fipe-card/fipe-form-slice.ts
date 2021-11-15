@@ -1,19 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@stores/store";
-
-export type FormField = {
-  codigo: string;
-  nome: string;
-};
-
-export type FormState = {
-  year: FormField | null;
-  brand: FormField | null;
-  model: FormField | null;
-  yearList: FormField[];
-  brandList: FormField[];
-  modelList: FormField[];
-};
+import type { FormState, FormField } from "@app-types/form-types";
 
 const initialState: FormState = {
   year: null,
@@ -28,22 +15,22 @@ export const fipeForm = createSlice({
   name: "fipeForm",
   initialState,
   reducers: {
-    setYear: (state, action: PayloadAction<any>) => {
+    setYear: (state, action: PayloadAction<FormField | null>) => {
       state.year = action.payload;
     },
-    setBrand: (state, action: PayloadAction<any>) => {
+    setBrand: (state, action: PayloadAction<FormField | null>) => {
       state.brand = action.payload;
     },
-    setModel: (state, action: PayloadAction<any>) => {
+    setModel: (state, action: PayloadAction<FormField | null>) => {
       state.model = action.payload;
     },
-    setYearList: (state, action: PayloadAction<any>) => {
+    setYearList: (state, action: PayloadAction<FormField[]>) => {
       state.yearList = action.payload;
     },
-    setBrandList: (state, action: PayloadAction<any>) => {
+    setBrandList: (state, action: PayloadAction<FormField[]>) => {
       state.brandList = action.payload;
     },
-    setModelList: (state, action: PayloadAction<any>) => {
+    setModelList: (state, action: PayloadAction<FormField[]>) => {
       state.modelList = action.payload;
     },
   },

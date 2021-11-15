@@ -1,14 +1,15 @@
-import type { NextPage } from "next";
-import { UIText } from "@components/ui/text";
-import { HomePageContainer } from "@styles/pages/home-page-style";
-import { SearchFIPECard } from "@modules/search-fipe-card";
-import { GetStaticProps } from "next";
 import { getAllBrands } from "@services/get-all-brands";
-import { useAppDispatch } from "@stores/hooks";
-import { setBrandList } from "@modules/search-fipe-card/fipe-form-slice";
-import { useRouter } from "next/router";
+import { GetStaticProps } from "next";
+import { HomePageContainer } from "@styles/pages/home-page-style";
 import { SearchFilter } from "@app-types/search-types";
+import { SearchFIPECard } from "@modules/search-fipe-card";
+import { setBrandList } from "@modules/search-fipe-card/fipe-form-slice";
+import { UIText } from "@components/ui/text";
+import { useAppDispatch } from "@stores/hooks";
+import { useRouter } from "next/router";
 import queryString from "query-string";
+import type { NextPage } from "next";
+import type { FormField } from "@app-types/form-types";
 
 const HomePage: NextPage<Props> = ({ brands }: Props) => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const HomePage: NextPage<Props> = ({ brands }: Props) => {
 };
 
 interface Props {
-  brands: object[];
+  brands: FormField[];
 }
 
 export const getServerSideProps: GetStaticProps = async () => {

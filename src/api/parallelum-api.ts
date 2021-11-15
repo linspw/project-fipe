@@ -15,14 +15,14 @@ const httpClient = Axios.create({
 });
 
 const getAllBrands = () =>
-  httpClient.get<any, SearchAllBrandsServerResponse>(`carros/marcas`);
+  httpClient.get<void, SearchAllBrandsServerResponse>(`carros/marcas`);
 
 const getPriceByFilter = ({
   brandId,
   modelId,
   yearId,
 }: SearchPriceByFilterParams) =>
-  httpClient.get<any, SearchPriceByFilterServerResponse>(
+  httpClient.get<SearchPriceByFilterParams, SearchPriceByFilterServerResponse>(
     `carros/marcas/${brandId}/modelos/${modelId}/anos/${yearId}`
   );
 
@@ -30,12 +30,13 @@ const getYearsByBrandAndModel = ({
   brandId,
   modelId,
 }: SearchYearsByBrandAndModelParams) =>
-  httpClient.get<any, SearchYearsByBrandAndModelServerResponse>(
-    `carros/marcas/${brandId}/modelos/${modelId}/anos`
-  );
+  httpClient.get<
+    SearchYearsByBrandAndModelParams,
+    SearchYearsByBrandAndModelServerResponse
+  >(`carros/marcas/${brandId}/modelos/${modelId}/anos`);
 
 const getModelsByBrand = ({ brandId }: SearchModelByBrandParams) =>
-  httpClient.get<any, SearchModelByBrandServerResponse>(
+  httpClient.get<SearchModelByBrandParams, SearchModelByBrandServerResponse>(
     `carros/marcas/${brandId}/modelos`
   );
 

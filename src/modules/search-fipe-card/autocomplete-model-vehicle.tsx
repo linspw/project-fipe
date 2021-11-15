@@ -1,4 +1,6 @@
-import * as React from "react";
+import React from "react";
+import type { FormField } from "@app-types/form-types";
+import type { SyntheticEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/core/Autocomplete";
 import type { NextComponentType } from "next";
@@ -23,6 +25,15 @@ const AutocompleteModelVehicle: NextComponentType = () => {
   const options = useAppSelector(selectModelList);
   const dispatch = useAppDispatch();
 
+  const handleSelectChange = (
+    _event: SyntheticEvent<Element, Event>,
+    newValue: FormField | null
+  ) => {
+    dispatch(setModel(newValue));
+    dispatch(setYearList([]));
+    dispatch(setYear(null));
+  };
+
   useEffect(() => {
     if (!cannotSearchModel) {
       getModelsByBrand({ brandId: brand?.codigo }).then((result) => {
@@ -31,24 +42,20 @@ const AutocompleteModelVehicle: NextComponentType = () => {
     }
   }, [cannotSearchModel, brand, dispatch]);
 
-  const handleSelectChange = (event: any, newValue: any) => {
-    dispatch(setModel(newValue));
-    dispatch(setYearList([]));
-    dispatch(setYear(null));
-  };
-
   return (
     <Autocomplete
-      noOptionsText="Nenhuma opção encontrada!"
-      value={value}
-      onChange={handleSelectChange}
-      options={options}
-      sx={{ marginBottom: "16px", width: "100%" }}
       disabled={cannotSearchModel}
       getOptionLabel={(option) => option.nome}
+      loading={true}
+      loadingText="Carregando"
+      noOptionsText="Nenhuma opção encontrada!"
+      onChange={handleSelectChange}
+      options={options}
       renderInput={(params) => (
         <TextField {...params} label="Modelo" disabled={cannotSearchModel} />
       )}
+      sx={{ marginBottom: "16px", width: "100%" }}
+      value={value}
     />
   );
 };
