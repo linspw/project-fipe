@@ -4,6 +4,6 @@ context("Home Page", () => {
   });
 
   it("should render the home page and display a message", () => {
-    cy.get("h1").contains("Welcome");
+    cy.get("h1").contains("Tabela Fipe");
   });
 });
