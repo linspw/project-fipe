@@ -26,6 +26,15 @@ Dentro desta pastas os componentes e regras de negócio estão organizados dessa
 - api
   - Diretório com o encapsulamento de serviços para aplicação, exemplo: ``
 
+## Screenshots
+### Desktop
+![desktop-2](https://user-images.githubusercontent.com/43552865/141843428-99a1954e-08c6-401f-9a60-e5b6924849df.png)
+![desktop-3](https://user-images.githubusercontent.com/43552865/141843431-e7f7490a-732f-4858-b7d4-23ef905dc3e2.png)
+### Mobile
+![mobile-2](https://user-images.githubusercontent.com/43552865/141843433-2ce3f328-f6ed-41fe-a284-3db62bb8d597.png)
+![mobile-3](https://user-images.githubusercontent.com/43552865/141843434-8122b9f6-0b2e-4e5a-b97d-60dc935ae5bf.png)
+
+
 ## Getting Started
 
 Para iniciar a aplicação local:
