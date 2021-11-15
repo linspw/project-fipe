@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto FIPE
+
+Aplicação que acessa a API da Parallelum para pesquisar o preço de um veículo com base na tabela FIPE.
+
+Desenvolvido em Next.js, Typescript, Redux, Styled-components e Material-UI.
+Testado em Jest(testing library) e cypress.
+
+## Estrutura do projeto
+
+A maior parte das configurações da aplicação estão no diretório `src`.
+
+Dentro desta pastas os componentes e regras de negócio estão organizados dessa forma:
+
+- components
+  - Diretório onde guardar componentes mais génericos ou globais da aplicação.
+- modules
+  - Diretório para componentes com regra de negócio e que podem ser transferidos de página(evitando amarração com a página).
+- layouts
+  - Diretório para criar templates de layouts globais para aplicação.
+- pages
+  - Diretório para concentrar os componentes das páginas que são carregadas com o auto-loading do Next.
+- stores
+  - Diretório onde os principais componentes da store estão.
+- services
+  - Diretório para armazenar os serviços para operações na aplicação.
+- api
+  - Diretório com o encapsulamento de serviços para aplicação, exemplo: ``
 
 ## Getting Started
 
-First, run the development server:
+Para iniciar a aplicação local:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Rota [local](http://localhost:3000).
+- Rota [web vercel](https://project-fipe.vercel.app/).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+yarn test # Rodar todos os testes.
+yarn test:unit # Rodar teste unitário.
+yarn test:e2e # Rodar teste end-to-end.
+```
